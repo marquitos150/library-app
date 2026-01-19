@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.header {
+    background-color: rgb(255, 212, 127);
+    padding: 40px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    background-color: rgb(255, 246, 212);
+    width: 100%;
+    height: 100%;
+}
+
+.left-pillar,
+.right-pillar {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.left-pillar .top,
+.right-pillar .top {
+    height: 70px;
+    background-image: url('assets/top-ancient-pillar.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.left-pillar .bottom,
+.right-pillar .bottom {
+    height: 40px;
+    background-image: url('assets/bottom-ancient-pillar.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.left-pillar .mid,
+.right-pillar .mid {
+    background-image: url('assets/ancient-pillar.png');
+    background-size: 34% auto;
+    background-position: center;
+    background-repeat: repeat-y;
+}
