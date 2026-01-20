@@ -22,13 +22,29 @@
                 <!-- Books will be dynamically added here -->
                 <!-- Lets add some samples first tho to test the styling first -->
                 <div class="book-card">
-                    <div class="book-header">
-                        <div class="book-title">
-                            <h2>Title:</h2>
-                            <div class="title">The Great Gatsby</div>
+                    <div class="book-card-header">
+                        <div class="book-card-title">
+                            <h1>Title:</h1>
+                            <div class="card-title">The Great Gatsby</div>
                         </div>
-                        <div class="trash-icon">
-                            
+                        <button id="trash-icon-button">
+                            <div class="trash-icon"></div>
+                        </button>
+                    </div>
+                    <div class="book-card-content">
+                        <div class="book-card-details">
+                            <div class="book-card-author">
+                                <h2>Author:</h2>
+                                <div class="card-author">F. Scott Fitzgerald</div>
+                            </div>
+                            <div class="book-card-pages">
+                                <h2>Pages:</h2>
+                                <div class="card-pages">180</div>
+                            </div>
+                        </div>
+                        <div id="book-completion-status">
+                            <button id="hasRead"></button>
+                            <div id="completion-status">Read</div>
                         </div>
                     </div>
                 </div>
