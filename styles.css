@@ -51,8 +51,6 @@ body {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
-    right: 0.5px; /* adjusted for alignment */
 }
 
 .left-pillar .mid,
@@ -82,13 +80,17 @@ body {
 
 .book-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-template-rows: repeat(auto-fit, 200px);
     gap: 15px;
 }
 
 .book-card {
     display: flex;
     flex-direction: column;
+    box-shadow: 0px 10px 10px rgb(199, 171, 115);
+    cursor: pointer;
+    border: 2px solid rgb(187, 152, 81);
 }
 
 .book-card-header {
@@ -106,40 +108,78 @@ h1 {
 }
 
 .card-title {
-    font-size: 20px;
+    font-size: 25px;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 200px;
+    max-width: 250px;
     text-overflow: ellipsis;
 }
 
 #trash-icon-button {
     background-color: rgb(222, 132, 13);
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border: 2px solid rgb(82, 65, 30);
     border-radius: 20px;
     display: flex;
     justify-content: center;
+    margin: 5px;
 }
 
 .trash-icon {
     background-image: url('assets/cross.svg');
     background-size: cover;
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
 }
 
 .book-card-content {
     background-color: rgb(245, 223, 152);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.book-card-details {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.book-card-author,
+.book-card-pages {
+    width: 50%;
+}
+
+.card-author,
+.card-pages {
+    font-size: 17px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px;
+    text-overflow: ellipsis;
+}
+
+#book-completion-status {
+    margin-left: auto;
+    padding: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 #hasRead {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    background-color: rgb(212, 178, 104);
     border: 2px solid rgb(174, 136, 60);
+    margin-left: auto;
+}
+
+#completion-status {
+    color: rgb(255, 55, 0);
 }
 
 .footer {
