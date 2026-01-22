@@ -82,7 +82,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, 350px);
     grid-template-rows: repeat(auto-fit, 200px);
-    gap: 15px;
+    gap: 20px;
 }
 
 .book-card {
