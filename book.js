@@ -1,18 +1,15 @@
 const myLibrary = [];
 
-function Book(title, author, pages, isRead) {
+function Book(title, author, pages, hasRead) {
     this.uuid = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.isRead = isRead;
-    this.info = function() {
-        return `${this.uuid}: ${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead ? 'read' : 'not read yet'}`;
-    }
+    this.hasRead = hasRead;
 }
 
-function addBookToLibrary(title, author, pages, isRead) {
-    const book = new Book(title, author, pages, isRead);
+function addBookToLibrary(title, author, pages, hasRead) {
+    const book = new Book(title, author, pages, hasRead);
     myLibrary.push(book);
 }
 
@@ -46,7 +43,7 @@ function displayBooks() {
                 </div>
                 <div id="book-completion-status">
                     <button id="hasRead"></button>
-                    <div id="completion-status">${book.isRead ? 'Read' : 'Not Read'}</div>
+                    <div id="completion-status">${book.hasRead ? 'Completed' : 'Incomplete'}</div>
                 </div>
             </div>
             `;
@@ -54,19 +51,34 @@ function displayBooks() {
         bookList.appendChild(bookCard);
     })
 }
-/*
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, true);
-addBookToLibrary('1984', 'George Orwell', 328, false);
-
-displayBooks();
-*/
+// Main DOM Elements
 const bookList = document.querySelector('.book-list');
-const addBtn = document.getElementById('add-book-button');
+const addBtn = document.getElementById('add-book-btn');
+
+// Dialog DOM Elements
 const popup = document.getElementById('popup-form');
+const form = document.querySelector('form');
+const closeBtn = document.getElementById('close-btn');
+
+// Close Popup Event Listener
+closeBtn.addEventListener('click', () => {
+    popup.close();
+});
 
 // Add New Book Button Event Listener
 addBtn.addEventListener('click', () => {
-    //addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
-    //displayBooks();
     popup.showModal();
+});
+
+// Submit Button Event Listener
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const hasRead = document.getElementById('has-read').checked;
+
+    addBookToLibrary(title, author, pages, hasRead);
+    displayBooks();
+    popup.close();
 });

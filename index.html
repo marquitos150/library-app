@@ -18,7 +18,7 @@
             <div class="bottom"></div>
         </div>
         <div class="library">
-            <button id="add-book-button">+ Add New Book</button>
+            <button id="add-book-btn">+ Add New Book</button>
             <div class="book-list">
                 <!-- Books will be dynamically added here -->
             </div>
@@ -33,7 +33,7 @@
         <div>Copyright © Marcos Vazquez 2025</div>
         <p>Credits: <a href="https://www.flaticon.com/free-icons/greece" title="greece icons">Greece icons created by max.icons - Flaticon</a></p>
     </div>
-    <dialog id="popup-form" open>
+    <dialog id="popup-form">
         <div class="dialog-header">
             <h2>Add New Book</h2>
             <button id="close-btn">
@@ -47,15 +47,11 @@
             <input type="text" id="author" name="author" required>
             <label for="pages">Pages</label>
             <input type="number" id="pages" name="pages" required>
-            <label for="read-status">Read Status</label>
-            <select id="read-status" name="read-status">
-                <option value="read">Read</option>
-                <option value="not-read">Not Read</option>
-            </select>
-            <menu>
-                <button id="cancel-btn">Cancel</button>
-                <button id="submit-btn" type="submit">Add Book</button>
-            </menu>
+            <div id="read-status">
+                <input type="checkbox" id="has-read" name="has-read">
+                <label for="has-read">Completed</label>
+            </div>
+            <button id="submit-btn" type="submit">Add Book</button>
         </form>
     </dialog>
     <script src="book.js"></script>
