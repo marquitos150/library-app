@@ -61,10 +61,12 @@ addBookToLibrary('1984', 'George Orwell', 328, false);
 displayBooks();
 */
 const bookList = document.querySelector('.book-list');
+const addBtn = document.getElementById('add-book-button');
+const popup = document.getElementById('popup-form');
 
 // Add New Book Button Event Listener
-const addBtn = document.getElementById('add-book-button');
 addBtn.addEventListener('click', () => {
-    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
-    displayBooks();
+    //addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
+    //displayBooks();
+    popup.showModal();
 });
