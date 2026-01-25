@@ -8,13 +8,16 @@ function Book(title, author, pages, hasRead) {
     this.hasRead = hasRead;
 }
 
+Book.prototype.toggleReadStatus = function() {
+    this.hasRead = !this.hasRead;
+}
+
 function addBookToLibrary(title, author, pages, hasRead) {
     const book = new Book(title, author, pages, hasRead);
     myLibrary.push(book);
 }
 
 function displayBooks() {
-    //myLibrary.forEach(book => console.log(book.info()));
     bookList.innerHTML = '';
     myLibrary.forEach(book => {
         const bookCard = document.createElement('div');
@@ -43,7 +46,6 @@ function displayBooks() {
                     </div>
                 </div>
                 <div class="book-completion-status">
-                    <button class="hasRead"></button>
                     <div class="completion-status"></div>
                 </div>
             </div>
@@ -52,7 +54,22 @@ function displayBooks() {
         bookCard.querySelector('.card-title').textContent = book.title;
         bookCard.querySelector('.card-author').textContent = book.author;
         bookCard.querySelector('.card-pages').textContent = book.pages;
-        bookCard.querySelector('.completion-status').textContent = book.hasRead ? 'Completed' : 'Incomplete';
+
+        // Handle completion status of book
+        const bookCompletionStatus = bookCard.querySelector('.book-completion-status');
+        const hasReadBtn = document.createElement('button');
+        const completionStatus = bookCard.querySelector('.completion-status');
+        if (book.hasRead) {
+            hasReadBtn.classList.add('hasRead');
+            const checkMark = document.createElement('div');
+            checkMark.classList.add('check-mark');
+            hasReadBtn.appendChild(checkMark);
+        } else {
+            hasReadBtn.classList.remove('hasRead');
+        }
+
+        completionStatus.textContent = book.hasRead ? 'Completed' : 'Incomplete';
+        bookCompletionStatus.insertBefore(hasReadBtn, completionStatus);
 
         bookList.appendChild(bookCard);
     })
@@ -89,6 +106,7 @@ form.addEventListener('submit', (e) => {
     popup.close();
 });
 
+// Listens for any clicks made on the book list
 bookList.addEventListener('click', (e) => {
     let target = e.target;
     target.blur();
@@ -99,6 +117,17 @@ bookList.addEventListener('click', (e) => {
         const bookIndex = myLibrary.findIndex(book => book.uuid === bookId);
         if (bookIndex !== -1) {
             myLibrary.splice(bookIndex, 1);
+            displayBooks();
+        }
+    }
+
+    // Toggle Has Read Event
+    if (target.classList.contains('check-mark') || 
+        (target.tagName === 'BUTTON' && target.parentElement.classList.contains('book-completion-status'))) {
+        const bookId = target.closest('.book-card').dataset.id;
+        const book = myLibrary.find(book => book.uuid === bookId);
+        if (book) {
+            book.toggleReadStatus();
             displayBooks();
         }
     }
