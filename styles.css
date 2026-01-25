@@ -76,6 +76,30 @@ body {
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 5px -5px 0px rgb(174, 136, 60) inset;
+    cursor: pointer;
+}
+
+.library > button:hover,
+form > button:hover {
+    background-color: rgb(212, 138, 0);
+    box-shadow: 5px -5px 0px rgb(152, 112, 53) inset;
+}
+
+.library > button:active,
+form > button:active {
+    position: relative;
+    top: 2px;
+    right: 2px;
+    padding: 8px 13px 10px 15px;
+    background-color: rgb(208, 135, 0);
+    box-shadow: 3px -3px 0px rgb(122, 90, 43) inset;
+}
+
+.library > button:active span,
+form > button:active span {
+    position: relative;
+    top: 2px;
+    right: 2px;
 }
 
 .book-list {
@@ -89,7 +113,6 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 0px 10px 10px rgb(199, 171, 115);
-    cursor: pointer;
     border: 2px solid rgb(187, 152, 81);
 }
 
@@ -115,16 +138,25 @@ h1 {
     text-overflow: ellipsis;
 }
 
-#trash-icon-button {
+.trash-icon-btn {
     background-color: rgb(222, 132, 13);
     align-items: center;
     width: 30px;
     height: 30px;
-    border: 2px solid rgb(82, 65, 30);
+    border: 2px solid black;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     margin: 5px;
+    cursor: pointer;
+}
+
+.trash-icon-btn:hover {
+    background-color: rgb(255, 100, 0);
+}
+
+.trash-icon-btn:active {
+    background-color: rgb(220, 88, 0);
 }
 
 .trash-icon {
@@ -162,14 +194,14 @@ h1 {
     text-overflow: ellipsis;
 }
 
-#book-completion-status {
+.book-completion-status {
     margin-left: auto;
     padding: 0 10px 10px 0;
     display: flex;
     flex-direction: column;
 }
 
-#hasRead {
+.hasRead {
     width: 40px;
     height: 40px;
     margin-bottom: 5px;
@@ -178,7 +210,7 @@ h1 {
     margin-left: auto;
 }
 
-#completion-status {
+.completion-status {
     color: rgb(255, 55, 0);
 }
 
@@ -278,6 +310,14 @@ input[id="pages"] {
     padding: 5px;
 }
 
+input[id="title"]:focus,
+input[id="author"]:focus,
+input[id="pages"]:focus {
+    outline: none;
+    border: 1px solid rgb(207, 155, 0);
+    box-shadow: 0 3px 5px rgb(215, 215, 215);
+}
+
 #read-status {
     margin: 10px 0 5px 20px;
     display: flex;
@@ -307,4 +347,9 @@ form > button {
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 5px -5px 0px rgb(174, 136, 60) inset;
+    cursor: pointer;
+}
+
+form > button:active {
+    margin-bottom: 22px;
 }

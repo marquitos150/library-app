@@ -19,6 +19,7 @@ function displayBooks() {
     myLibrary.forEach(book => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
+        bookCard.dataset.id = book.uuid;
 
         bookCard.innerHTML = `
             <div class="book-card-header">
@@ -26,7 +27,7 @@ function displayBooks() {
                     <h1>Title:</h1>
                     <div class="card-title"></div>
                 </div>
-                <button id="trash-icon-button">
+                <button class="trash-icon-btn">
                     <div class="trash-icon"></div>
                 </button>
             </div>
@@ -41,9 +42,9 @@ function displayBooks() {
                         <div class="card-pages"></div>
                     </div>
                 </div>
-                <div id="book-completion-status">
-                    <button id="hasRead"></button>
-                    <div id="completion-status"></div>
+                <div class="book-completion-status">
+                    <button class="hasRead"></button>
+                    <div class="completion-status"></div>
                 </div>
             </div>
             `;
@@ -51,7 +52,7 @@ function displayBooks() {
         bookCard.querySelector('.card-title').textContent = book.title;
         bookCard.querySelector('.card-author').textContent = book.author;
         bookCard.querySelector('.card-pages').textContent = book.pages;
-        bookCard.querySelector('#completion-status').textContent = book.hasRead ? 'Completed' : 'Incomplete';
+        bookCard.querySelector('.completion-status').textContent = book.hasRead ? 'Completed' : 'Incomplete';
 
         bookList.appendChild(bookCard);
     })
@@ -86,4 +87,19 @@ form.addEventListener('submit', (e) => {
     addBookToLibrary(title, author, pages, hasRead);
     displayBooks();
     popup.close();
+});
+
+bookList.addEventListener('click', (e) => {
+    let target = e.target;
+    target.blur();
+
+    // Trash Book Event
+    if (target.classList.contains('trash-icon-btn') || target.classList.contains('trash-icon')) {
+        const bookId = target.closest('.book-card').dataset.id;
+        const bookIndex = myLibrary.findIndex(book => book.uuid === bookId);
+        if (bookIndex !== -1) {
+            myLibrary.splice(bookIndex, 1);
+            displayBooks();
+        }
+    }
 });
