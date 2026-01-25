@@ -24,7 +24,7 @@ function displayBooks() {
             <div class="book-card-header">
                 <div class="book-card-title">
                     <h1>Title:</h1>
-                    <div class="card-title">${book.title}</div>
+                    <div class="card-title"></div>
                 </div>
                 <button id="trash-icon-button">
                     <div class="trash-icon"></div>
@@ -34,19 +34,24 @@ function displayBooks() {
                 <div class="book-card-details">
                     <div class="book-card-author">
                         <h1>Author:</h1>
-                        <div class="card-author">${book.author}</div>
+                        <div class="card-author"></div>
                     </div>
                     <div class="book-card-pages">
                         <h1>Pages:</h1>
-                        <div class="card-pages">${book.pages}</div>
+                        <div class="card-pages"></div>
                     </div>
                 </div>
                 <div id="book-completion-status">
                     <button id="hasRead"></button>
-                    <div id="completion-status">${book.hasRead ? 'Completed' : 'Incomplete'}</div>
+                    <div id="completion-status"></div>
                 </div>
             </div>
             `;
+        
+        bookCard.querySelector('.card-title').textContent = book.title;
+        bookCard.querySelector('.card-author').textContent = book.author;
+        bookCard.querySelector('.card-pages').textContent = book.pages;
+        bookCard.querySelector('#completion-status').textContent = book.hasRead ? 'Completed' : 'Incomplete';
 
         bookList.appendChild(bookCard);
     })
