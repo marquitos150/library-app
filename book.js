@@ -19,11 +19,13 @@ function addBookToLibrary(title, author, pages, hasRead) {
 }
 
 function displayBooks() {
-    // Display filter buttons if there is at least one book in the library
+    // Display filter buttons and remove helper container if there is at least one book in the library
     if (myLibrary.length > 0) {
         filterBtns.style.display = 'flex';
+        helperContainer.style.display = 'none';
     } else {
         filterBtns.style.display = 'none';
+        helperContainer.style.display = 'flex';
     }
 
     bookList.innerHTML = '';
@@ -90,6 +92,7 @@ function displayBooks() {
 const bookList = document.querySelector('.book-list');
 const addBtn = document.getElementById('add-book-btn');
 const filterBtns = document.querySelector('.filter-btns');
+const helperContainer = document.querySelector('.helper-container');
 
 // Dialog DOM Elements
 const popup = document.getElementById('popup-form');

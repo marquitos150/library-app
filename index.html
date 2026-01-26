@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Library</title>
+    <link rel="icon" type="image/svg" href="assets/library.svg">
+    <title>Stoic Library</title>
     <link rel="stylesheet" href="styles.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:500,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="header">
-        Odin Library
-    </div>
-    <div class="container">
+    <header>
+        <div class="library-icon"></div>Stoic Library
+    </header>
+    <main>
         <div class="left-pillar">
             <div class="top"></div>
             <div class="mid"></div>
@@ -24,6 +25,9 @@
                 <button id="completed" class="filter-btn">Completed</button>
                 <button id="incomplete" class="filter-btn">Incomplete</button>
             </div>
+            <div class="helper-container">
+                    Start adding books to your library by clicking the "+ Add New Book" button above!
+             </div>
             <div class="book-list">
                 <!-- Books will be dynamically added here -->
             </div>
@@ -33,11 +37,11 @@
             <div class="mid"></div>
             <div class="bottom"></div>
         </div>
-    </div>
-    <div class="footer">
+    </main>
+    <footer>
         <div>Copyright © Marcos Vazquez 2025</div>
         <p>Credits: <a href="https://www.flaticon.com/free-icons/greece" title="greece icons">Greece icons created by max.icons - Flaticon</a></p>
-    </div>
+    </footer>
     <!-- Popup form for adding new book -->
     <dialog id="popup-form">
         <div class="dialog-header">
