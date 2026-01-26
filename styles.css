@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    height: 100%;
 }
 
 header {
@@ -115,7 +114,6 @@ form > button:active span {
 
 .filter-btns {
     display: none;
-    /*display: flex;*/
     justify-content: center;
     margin: 10px 0;
 }
@@ -251,6 +249,14 @@ h1 {
     background-color: rgb(212, 178, 104);
     border: 2px solid rgb(174, 136, 60);
     margin-left: auto;
+}
+
+.book-completion-status > button:hover {
+    border: 2px solid rgb(119, 102, 48);
+}
+
+.book-completion-status > button:active {
+    background-color: rgb(189, 158, 90);
 }
 
 .book-completion-status > button.hasRead .check-mark {
