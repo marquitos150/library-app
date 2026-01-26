@@ -1,4 +1,5 @@
 const myLibrary = [];
+let currentFilter = 'all';
 
 function Book(title, author, pages, hasRead) {
     this.uuid = crypto.randomUUID();
@@ -18,8 +19,19 @@ function addBookToLibrary(title, author, pages, hasRead) {
 }
 
 function displayBooks() {
+    // Display filter buttons if there is at least one book in the library
+    if (myLibrary.length > 0) {
+        filterBtns.style.display = 'flex';
+    } else {
+        filterBtns.style.display = 'none';
+    }
+
     bookList.innerHTML = '';
     myLibrary.forEach(book => {
+        // Display books based on current filter
+        if (currentFilter === 'completed' && !book.hasRead) return;
+        if (currentFilter === 'incomplete' && book.hasRead) return;
+        
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         bookCard.dataset.id = book.uuid;
@@ -77,6 +89,7 @@ function displayBooks() {
 // Main DOM Elements
 const bookList = document.querySelector('.book-list');
 const addBtn = document.getElementById('add-book-btn');
+const filterBtns = document.querySelector('.filter-btns');
 
 // Dialog DOM Elements
 const popup = document.getElementById('popup-form');
@@ -130,5 +143,19 @@ bookList.addEventListener('click', (e) => {
             book.toggleReadStatus();
             displayBooks();
         }
+    }
+});
+
+// Listens for filter button clicks
+filterBtns.addEventListener('click', (e) => {
+    let target = e.target;
+    target.blur();
+
+    // Change button active status
+    if (target.classList.contains('filter-btn') && !target.classList.contains('active')) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        target.classList.add('active');
+        currentFilter = target.id;
+        displayBooks();
     }
 });

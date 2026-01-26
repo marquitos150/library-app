@@ -7,8 +7,8 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .header {
@@ -25,7 +25,7 @@ body {
     display: grid;
     grid-template-columns: 120px 1fr 120px;
     background-color: rgb(255, 246, 212);
-    height: 100%;
+    flex: 1;
     box-shadow: 0px 10px 10px rgb(179, 151, 105) inset;
 }
 
@@ -100,6 +100,28 @@ form > button:active span {
     position: relative;
     top: 2px;
     right: 2px;
+}
+
+.filter-btns {
+    display: none;
+    /*display: flex;*/
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.filter-btn {
+    background-color: rgb(255, 212, 127);
+    border: 2px solid rgb(213, 164, 65);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.filter-btn.active {
+    background-color: rgb(207, 155, 0);
+    border: 2px solid rgb(174, 136, 60);
+    color: white;
 }
 
 .book-list {
