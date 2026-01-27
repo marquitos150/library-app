@@ -3,21 +3,52 @@
     padding: 0;
 }
 
+:root {
+    --font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --secondary-font-family: 'Roboto', sans-serif;
+
+    --light: white;
+    --gold-light: rgb(255, 246, 212);
+    --gold-light-medium: rgb(255, 212, 127);
+    --gold-medium: rgb(207, 155, 0);
+    --gold-medium-dark: rgb(174, 136, 60);
+    --gold-dark: rgb(150, 110, 29);
+
+    --yellow-light: rgb(245, 223, 152);
+    --yellow-regular: rgb(255, 208, 0);
+    --yellow-dark: rgb(201, 164, 0);
+
+    --orange-regular: rgb(212, 138, 0);
+    --orange-bright: rgb(255, 100, 0);
+    --orange-dark: rgb(220, 88, 0);
+
+    --red: rgb(255, 55, 0);
+    --green: rgb(0, 152, 20);
+
+    --small-spacing: 10px;
+    --small-medium-spacing: 15px;
+    --medium-spacing: 20px;
+    --large-spacing: 30px; 
+
+    --shadow-inset: 0px 3px 10px var(--gold-dark) inset;
+    --shadow-regular: 0px 3px 10px var(--gold-dark);
+}
+
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: var(--font-family);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 header {
-    background-color: rgb(255, 212, 127);
-    padding: 20px 0;
+    background-color: var(--gold-light-medium);
+    padding: var(--medium-spacing) 0;
     text-align: center;
     font-weight: bold;
     font-size: 48px;
-    box-shadow: 5px -5px 0px rgb(150, 110, 29) inset,
-                -5px 5px 0px rgb(213, 164, 65) inset;
+    box-shadow: 5px -5px 0px var(--gold-dark) inset,
+                -5px 5px 0px var(--gold-medium) inset;
     display: flex;
     align-items: center;
 }
@@ -27,16 +58,16 @@ header {
     background-size: cover;
     width: 80px;
     height: 80px;
-    margin-left: 20px;
-    margin-right: 10px;
+    margin-left: var(--medium-spacing);
+    margin-right: var(--small-spacing);
 }
 
 main {
     display: grid;
     grid-template-columns: 120px 1fr 120px;
-    background-color: rgb(255, 246, 212);
+    background-color: var(--gold-light);
     flex: 1;
-    box-shadow: 0px 10px 10px rgb(179, 151, 105) inset;
+    box-shadow: var(--shadow-inset);
 }
 
 .left-pillar,
@@ -74,25 +105,26 @@ main {
 .library {
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
+    padding: var(--medium-spacing) 0;
 }
 
-.library > button {
-    margin-left: auto;
-    background-color: rgb(207, 155, 0);
+.library > button,
+form > button {
+    margin: 10px 30px 20px auto;
+    background-color: var(--gold-medium);
     border: none;
-    padding: 10px 15px;
+    padding: var(--small-spacing) var(--small-medium-spacing);
     color: white;
     font-weight: bold;
     border-radius: 10px;
-    box-shadow: 5px -5px 0px rgb(174, 136, 60) inset;
+    box-shadow: 5px -5px 0px var(--gold-medium-dark) inset;
     cursor: pointer;
 }
 
 .library > button:hover,
 form > button:hover {
-    background-color: rgb(212, 138, 0);
-    box-shadow: 5px -5px 0px rgb(152, 112, 53) inset;
+    background-color: var(--orange-regular);
+    box-shadow: 5px -5px 0px var(--gold-dark) inset;
 }
 
 .library > button:active,
@@ -100,11 +132,18 @@ form > button:active {
     position: relative;
     top: 2px;
     right: 2px;
-    padding: 8px 13px 10px 15px;
-    background-color: rgb(208, 135, 0);
-    box-shadow: 3px -3px 0px rgb(122, 90, 43) inset;
+    padding: 8px 13px var(--small-spacing) var(--small-medium-spacing);
+    background-color: var(--orange-regular);
+    box-shadow: 3px -3px 0px var(--gold-dark) inset;
 }
 
+/* Offset buttons when they are pressed */
+.library > button:active,
+form > button:active {
+    margin-bottom: 22px;
+}
+
+/* Offset text inside buttons when they are pressed */
 .library > button:active span,
 form > button:active span {
     position: relative;
@@ -115,12 +154,12 @@ form > button:active span {
 .filter-btns {
     display: none;
     justify-content: center;
-    margin: 10px 0;
+    margin: var(--small-spacing) 0;
 }
 
 .filter-btn {
-    background-color: rgb(255, 212, 127);
-    border: 2px solid rgb(213, 164, 65);
+    background-color: var(--gold-light-medium);
+    border: 2px solid var(--orange-regular);
     padding: 8px 12px;
     cursor: pointer;
     font-weight: bold;
@@ -128,9 +167,9 @@ form > button:active span {
 }
 
 .filter-btn.active {
-    background-color: rgb(207, 155, 0);
-    border: 2px solid rgb(174, 136, 60);
-    color: white;
+    background-color: var(--gold-medium);
+    border: 2px solid var(--gold-dark);
+    color: var(--light);
 }
 
 .helper-container {
@@ -140,21 +179,21 @@ form > button:active span {
     font-size: 23px;
     color: rgb(111, 111, 111, 0.7);
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--secondary-font-family);
 }
 
 .book-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 350px);
     grid-template-rows: repeat(auto-fit, 200px);
-    gap: 20px;
+    gap: var(--medium-spacing);
 }
 
 .book-card {
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 10px 10px rgb(199, 171, 115);
-    border: 2px solid rgb(187, 152, 81);
+    box-shadow: var(--shadow-regular);
+    border: 2px solid var(--yellow-dark);
 }
 
 .book-card-header {
@@ -164,7 +203,7 @@ form > button:active span {
 }
 
 .book-card-title {
-    padding: 10px;
+    padding: var(--small-spacing);
 }
 
 h1 {
@@ -180,7 +219,7 @@ h1 {
 }
 
 .trash-icon-btn {
-    background-color: rgb(222, 132, 13);
+    background-color: var(--orange-regular);
     align-items: center;
     width: 30px;
     height: 30px;
@@ -193,11 +232,11 @@ h1 {
 }
 
 .trash-icon-btn:hover {
-    background-color: rgb(255, 100, 0);
+    background-color: var(--orange-bright);
 }
 
 .trash-icon-btn:active {
-    background-color: rgb(220, 88, 0);
+    background-color: var(--orange-dark);
 }
 
 .trash-icon {
@@ -208,7 +247,7 @@ h1 {
 }
 
 .book-card-content {
-    background-color: rgb(245, 223, 152);
+    background-color: var(--yellow-light);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -217,8 +256,8 @@ h1 {
 
 .book-card-details {
     display: flex;
-    gap: 20px;
-    padding: 10px;
+    gap: var(--medium-spacing);
+    padding: var(--small-spacing);
 }
 
 .book-card-author,
@@ -237,7 +276,7 @@ h1 {
 
 .book-completion-status {
     margin-left: auto;
-    padding: 0 10px 10px 0;
+    padding: 0 var(--small-spacing) var(--small-spacing) 0;
     display: flex;
     flex-direction: column;
 }
@@ -246,17 +285,17 @@ h1 {
     width: 40px;
     height: 40px;
     margin-bottom: 5px;
-    background-color: rgb(212, 178, 104);
-    border: 2px solid rgb(174, 136, 60);
+    background-color: var(--gold-medium);
+    border: 2px solid var(--gold-medium-dark);
     margin-left: auto;
 }
 
 .book-completion-status > button:hover {
-    border: 2px solid rgb(119, 102, 48);
+    border: 2px solid var(--gold-dark);
 }
 
 .book-completion-status > button:active {
-    background-color: rgb(189, 158, 90);
+    background-color: var(--gold-medium-dark);
 }
 
 .book-completion-status > button.hasRead .check-mark {
@@ -268,16 +307,16 @@ h1 {
 }
 
 button + .completion-status {
-    color: rgb(255, 55, 0);
+    color: var(--red);
 }
 
 button.hasRead + .completion-status {
-    color: rgb(0, 152, 20);
+    color: var(--green);
 }
 
 footer {
-    background-color: rgb(207, 155, 0);
-    padding: 40px;
+    background-color: var(--gold-medium);
+    padding: var(--large-spacing);
 }
 
 footer div,
@@ -292,8 +331,8 @@ footer a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
+    background-color: var(--light);
+    font-family: var(--secondary-font-family);
     border: 1px solid rgb(200, 200, 200);
     width: 360px;
 }
@@ -305,25 +344,25 @@ footer a {
 .dialog-header {
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(to bottom right, rgb(207, 155, 0), rgb(255, 235, 168));
+    background: linear-gradient(to bottom right, var(--gold-medium), var(--gold-light-medium));
     border-bottom: 1px solid rgb(146, 146, 146);
 }
 
 .dialog-header h2 {
     font-size: 30px;
-    padding: 30px 0 10px 20px;
+    padding: var(--large-spacing) 0 var(--small-spacing) var(--medium-spacing);
 }
 
 #close-btn {
-    background: linear-gradient(to bottom right, rgb(189, 86, 1), rgb(242, 206, 162));
+    background: linear-gradient(to bottom right, var(--orange-bright), var(--gold-light-medium));
     align-items: center;
     width: 30px;
     height: 30px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid black;
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    margin: 10px 10px 0px 0px;
+    margin: var(--small-spacing) var(--small-spacing) 0px 0px;
     cursor: pointer;
 }
 
@@ -340,7 +379,6 @@ footer a {
     background-size: cover;
     width: 15px;
     height: 15px;
-    filter: invert(0);
 }
 
 form {
@@ -357,7 +395,7 @@ label[for="pages"] {
     font-weight: bold;
     color: gray;
     letter-spacing: 1.3px;
-    padding: 20px 0 5px 20px;
+    padding: var(--medium-spacing) 0 5px var(--medium-spacing);
 }
 
 input[id="title"],
@@ -366,7 +404,7 @@ input[id="pages"] {
     border: 1px solid rgb(208, 208, 208);
     background-color: rgb(250, 250, 250);
     width: 300px;
-    margin-left: 20px;
+    margin-left: var(--medium-spacing);
     font-size: 16px;
     padding: 5px;
 }
@@ -375,12 +413,12 @@ input[id="title"]:focus,
 input[id="author"]:focus,
 input[id="pages"]:focus {
     outline: none;
-    border: 1px solid rgb(207, 155, 0);
+    border: 1px solid var(--gold-medium);
     box-shadow: 0 3px 5px rgb(215, 215, 215);
 }
 
 #read-status {
-    margin: 10px 0 5px 20px;
+    margin: var(--small-spacing) 0 5px var(--medium-spacing);
     display: flex;
     align-items: center;
 }
@@ -395,26 +433,5 @@ input[id="pages"]:focus {
 }
 
 #read-status input[type="checkbox"] {
-    accent-color: rgb(255, 191, 0);
-}
-
-form > button {
-    margin: 10px 30px 20px auto;
-    background-color: rgb(207, 155, 0);
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    color: white;
-    font-weight: bold;
-    border-radius: 10px;
-    box-shadow: 5px -5px 0px rgb(174, 136, 60) inset;
-    cursor: pointer;
-}
-
-form > button:active {
-    margin-bottom: 22px;
-}
-
-.library > button:active {
-    margin-bottom: 2px;
+    accent-color: var(--yellow-regular);
 }
