@@ -1,16 +1,20 @@
+'use strict';
+
 const myLibrary = [];
 let currentFilter = 'all';
 
-function Book(title, author, pages, hasRead) {
-    this.uuid = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = hasRead;
-}
+class Book {
+    constructor(title, author, pages, hasRead) {
+        this.uuid = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.hasRead = hasRead;
+    }
 
-Book.prototype.toggleReadStatus = function() {
-    this.hasRead = !this.hasRead;
+    toggleReadStatus() {
+        this.hasRead = !this.hasRead;
+    }
 }
 
 function addBookToLibrary(title, author, pages, hasRead) {
